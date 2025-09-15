@@ -1,0 +1,10 @@
+:root{ --bg:#f7f7f7; --card:#fff; --accent:#0b5ed7; }
+body{ font-family: Arial, sans-serif; margin:0; background:var(--bg); color:#222; }
+.nav{ background:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+.nav a{ margin-left:1rem; text-decoration:none; color:var(--accent); }
+.container{ max-width:900px; margin:2rem auto; padding:0 1rem; }
+.card{ background:var(--card); padding:1rem; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.04); margin-bottom:1rem; }
+form label{ display:block; margin-bottom:0.5rem; }
+input, textarea{ width:100%; padding:0.5rem; margin-top:0.25rem; margin-bottom:0.75rem; }
+button{ background:var(--accent); color:#fff; border:none; padding:0.5rem 1rem; border-radius:6px; cursor:pointer; }
+.btn{ padding:0.25rem 0.5rem; border-radius:6px; background:var(--accent); color:#fff; text-decoration:none; }

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Portfolio - Home</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <h1>My Portfolio</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="btn">CMS</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section id="hero">
+      <h2>Hello — I'm a developer</h2>
+      <p>Welcome to my portfolio. Check my projects and blog.</p>
+    </section>
+    <section id="featured-projects">
+      <h3>Featured Projects</h3>
+      <div id="projects-list"></div>
+    </section>
+  </main>
+  <script src="js/api.js"></script>
+  <script>
+    async function loadFeatured(){
+      const projects = await api.fetchProjects();
+      const root = document.getElementById('projects-list');
+      if(!projects.length) root.innerHTML = '<p>No projects yet.</p>';
+      root.innerHTML = projects.slice(0,3).map(p=>`
+        <article class="card">
+          <h4>${p.title}</h4>
+          <p>${p.description || ''}</p>
+          <a href="${p.link || '#'}" target="_blank">View</a>
+        </article>
+      `).join('');
+    }
+    loadFeatured();
+  </script>
+</body>
+</html>

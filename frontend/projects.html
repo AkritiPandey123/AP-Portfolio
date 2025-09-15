@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <h1>Projects</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="dashboard.html" class="btn">CMS</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section>
+      <div id="projects-grid"></div>
+    </section>
+  </main>
+  <script src="js/api.js"></script>
+  <script>
+    async function load(){
+      const projects = await api.fetchProjects();
+      const g = document.getElementById('projects-grid');
+      if(!projects.length) g.innerHTML = '<p>No projects yet.</p>';
+      g.innerHTML = projects.map(p=>`
+        <article class="card">
+          <h4>${p.title}</h4>
+          <p>${p.description || ''}</p>
+          <p><strong>Tech:</strong> ${(p.tech||[]).join(', ')}</p>
+          <a href="${p.link||'#'}" target="_blank">Open</a>
+        </article>
+      `).join('');
+    }
+    load();
+  </script>
+</body>
+</html>
